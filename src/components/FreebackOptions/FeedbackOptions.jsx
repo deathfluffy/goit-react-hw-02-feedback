@@ -5,7 +5,7 @@ export default function FeedbackOptions ({ options })  {
 		<OptionsList>
 		  {options.map((option) => (
 				<OptionsItem key={option}>
-				<button key={shortid.generate()} type="button" name={option} onClick={onLeaveFeedback}>
+				<button key={shortid.generate()} type="button" name={option}  onClick={() => onLeaveFeedback(option)}>
 					{option}
 				  </button>
 				</OptionsItem>
