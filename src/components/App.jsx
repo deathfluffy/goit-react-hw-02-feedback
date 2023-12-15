@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import { Section } from './Section/Section';
+import { SectionMain } from './SectionMain/SectionMain';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Statistics } from './Statistics/Statistics';
-import { Notification } from './Notification/Notification';
+import  Notification  from './Notification/Notification';
 
 export class App extends Component {
   state = {
@@ -12,13 +12,13 @@ export class App extends Component {
     bad: 0,
   };
 
-  leaveFeedback = ({prevState}) => {
-    return {
-         counter: prevState.counter + 1
-       }
-  }
+  leaveFeedback = ({ target: { name } }) => {
+    this.setState(prevState => ({
+      [name]: prevState[name] + 1,
+    }));
+  };
 
-   countTotalFeedback = () => {
+  countTotalFeedback = () => {
     return Object.values(this.state).reduce((total, curr) => (total += curr));
   };
 
@@ -38,14 +38,14 @@ export class App extends Component {
 
     return (
       <>
-        <Section title="Please leave feedback">
+        <SectionMain title="Please leave feedback">
           <FeedbackOptions
             options={Object.keys(this.state)}
             leaveFeedback={this.leaveFeedback}
           />
-        </Section>
+        </SectionMain>
 
-        <Section title="Statistics">
+        <SectionMain title="Statistics">
           {totalFeedback ? (
             <Statistics
               good={good}
@@ -57,11 +57,8 @@ export class App extends Component {
           ) : (
             <Notification message="There is no feedback" />
           )}
-        </Section>
+        </SectionMain>
       </>
     );
   }
 }
-  
-
-

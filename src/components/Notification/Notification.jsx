@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
+import css from './Notification.module.css';
 
-import { NotificationText } from './Notification.module';
 
 export default function Notification  ( message ) {
- <NotificationText>{message}</NotificationText>
+ <span className={css.notification_message}>{message}</span>
 }
  
 Notification.propTypes = {

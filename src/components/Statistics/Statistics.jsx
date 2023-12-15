@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
-
-import { StatisticsList, StatisticsItem } from './Statistics.module.jsx';
+import css from './Statistics.module.css';
 
 export const Statistics = ({
   good,
@@ -18,9 +17,9 @@ export const Statistics = ({
   ];
 
   return (
-    <StatisticsList>
+    <section className={css.statistics_list}>
       {statisticArray.map(({ statItem, title }) => (
-        <StatisticsItem key={title}>
+        <div className={css.statistics_item} key={title}>
           <p>
             {title}:{' '}
             <span>
@@ -29,9 +28,9 @@ export const Statistics = ({
                 : positivePercentage + '%'}
             </span>
           </p>
-        </StatisticsItem>
+        </div>
       ))}
-    </StatisticsList>
+    </section>
   );
 };
 
