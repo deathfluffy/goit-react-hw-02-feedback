@@ -1,17 +1,19 @@
 import css from './FeedbackOptions.module.css';
 import PropTypes from 'prop-types';
-export default function FreebackOptions ({ options })  {
+export default function FeedbackOptions ({ options })  {
   return (
-		<>
-			{options.map((option) => (
+		<OptionsList>
+		  {options.map((option) => (
+				<OptionsItem key={option}>
 				<button key={shortid.generate()} type="button" name={option} onClick={onLeaveFeedback}>
 					{option}
-				</button>
+				  </button>
+				</OptionsItem>
 			))}
-		</>
+		</OptionsList>
 	);
 };
 FeedbackOptions.propTypes = {
-	options: PropTypes.array.isRequired,
+	options: PropTypes.arrayOf(PropTypes.string).isRequired,
 	onLeaveFeedback: PropTypes.func.isRequired
 };
